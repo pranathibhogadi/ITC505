@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Fashion Industry</title>
+</head>
+<body>
+  <h> FASCINATING FASHION</h>
+  <div id="game-container">
+    <div id="story">
+      <p id="story-text">Fascinating Fashion Industry</p>
+      <img id="story-image" src="https://i.pinimg.com/736x/18/64/ed/1864edd449e47baaeb5294c6a5c4455c.jpg" alt="Story Image">
+    </div>
+    <div id="choices"></div>
+    <button id="start-button" onclick="startGame()">Restart</button>
+  </div>
+  <br>
+  <hr>
+    <div id="addendum">
+      <h2>Addendum</h2>
+      <p>Crafting an immersive narrative within the fashion industry involved a methodical blend of creative ideation and technical implementation. The process commenced with brainstorming sessions to conceptualize compelling story arcs, considering the dynamic and diverse facets of the fashion world. <p>Challenges emerged during storyline development, particularly in maintaining narrative coherence while offering meaningful player choices. To address this, meticulous planning and iterative refinement were employed to ensure that each decision point contributed to a cohesive and engaging narrative experience.</p>
+
+        <p>Creative choices were guided by a desire to evoke the vibrant and glamorous essence of the fashion industry. Careful selection of thematic imagery and evocative language aimed to immerse players in the captivating world of haute couture. Challenges in sourcing appropriate visuals were overcome by leveraging curated image libraries and adapting visuals to align with the narrative context seamlessly.
+        </p>
+        <p>Technical challenges, such as scripting complex decision trees and implementing smooth transitions between story segments, were mitigated through diligent code optimization and rigorous testing. Insights gained underscored the importance of balancing creative vision with technical feasibility, emphasizing the need for collaboration between storytelling and programming disciplines.
+        </p>
+        Ultimately, this project illuminated the power of interactive storytelling to captivate audiences and foster meaningful engagement. By navigating through challenges and embracing an iterative development approach, valuable insights were gained into the intricacies of crafting compelling narratives within the dynamic realm of the fashion industry.
+      </p>
+    </div>
+    <footer>
+      <p>Last updated: 
+          <span id="lastModified"></span>
+      </p>
+  </footer>
+  <script type="text/javascript">
+       var x = document.lastModified;
+       document.getElementById('lastModified').textContent = x;
+  </script>
+<script src="index.js"></script>
+</body>
+</html>
