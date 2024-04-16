@@ -20,19 +20,19 @@
             margin: 0;
             background: url('Mad_lib.jpg') center center fixed; 
             background-size: cover;
-            color: rgb(33, 46, 194); /* Changed font color */
+            color: rgba(135, 206, 235, 0.457); /* Changed font color */
         }
 
         h1 {
             text-align: left;
-            color: rgba(44, 217, 78, 0.457); /* Changed heading color */
+            color:rgba(255, 165, 0, 0.457); /* Changed heading color */
             font-style: serif; /* Added serif font style */
         }
 
         form {
             max-width: 500px;
             margin: 0; /* Adjusted margin to shift form to the left */
-            background-color: rgba(285, 245, 245, 0.9); 
+            background-color:  rgba(0, 128, 128, 0.9); 
             padding: 20px;
             border-radius: 10px;
             margin-top: 50px; 
@@ -41,7 +41,7 @@
         label {
             display: block;
             margin-top: 10px;
-            color: rgb(162, 169, 95); 
+            color: rgb(165, 42, 42; 
         }
 
         input {
@@ -62,7 +62,7 @@
         }
 
         button:hover {
-            background-color: #16cabe;
+            background-color:  #006400;
         }
 
         #madLibResult {
@@ -70,7 +70,7 @@
         }
 
         .addendum {
-            color: #ad2f55; /* Changed addendum font color */
+            color: #FFFF00; /* Changed addendum font color */
             font-style: serif; /* Added serif font style */
         }
     </style>
@@ -101,33 +101,36 @@
     <!-- Addendum section -->
     <div class="addendum">
     <h2>Addendum</h2>
-    <p>Welcome to the backstage glimpse into the crafting of our Mad Libs adventure, designed to bring boundless joy to users of all ages.</p>
+       <p>Welcome to our behind-the-scenes look at the creation of our Mad Libs adventure, crafted to bring endless joy to users of all ages.</p>
     <p>Behind the Curtain:</p>
     
-    <p>HTML Framework: Our journey kicked off with meticulous HTML structuring. We tailored input fields to diverse word types – from adverbs to plural nouns, allowing users to personalize each Mad Lib for a bespoke experience.</p>
+    <p>HTML Foundation: Our journey began with careful HTML structuring. We customized input fields for various word types, from adverbs to plural nouns, enabling users to tailor each Mad Lib for a unique experience.</p>
     
-    <p>JavaScript Magic: Powering the dynamic Mad Libs generation is a sophisticated JavaScript function. It selects a sentence template from an array and fills in placeholders with user-provided words, injecting surprise and delight into every play.</p>
+    <p>JavaScript Wizardry: Fueling the dynamic Mad Libs generation is an advanced JavaScript function. It selects sentence templates from an array and seamlessly fills in placeholders with user-provided words, infusing each play with surprise and delight.</p>
     
-    <p>CSS Artistry: Attention to detail shines through in our CSS styling. We refined font styles, optimized form layouts, and curated background imagery, elevating the game's visual appeal and captivating users at every turn.</p>
+    <p>CSS Mastery: Our attention to detail shines in our CSS styling. We meticulously refined font styles, optimized form layouts, and selected background imagery to enhance the game's visual appeal, captivating users at every turn.</p>
     
-    <p>Footer Trustworthiness: Transparency is key, as evidenced in our footer. By displaying the last modified date, users can trust in the document's relevance, ensuring they're always in the loop about updates and refinements.</p>
+    <p>Footer Integrity: Transparency is paramount, evident in our footer. By showcasing the last modified date, users can trust in the document's relevance, ensuring they stay informed about updates and refinements.</p>
     
-    <p>Final Reflections: Our Mad Libs journey seamlessly integrates HTML structure, JavaScript functionality, CSS styling, and meticulous document management. The result? An immersive experience that invites users to unleash their creativity and revel in moments of laughter and delight.</p>
-    
-</div>
+    <p>Final Thoughts: Our Mad Libs journey seamlessly integrates HTML structure, JavaScript functionality, CSS styling, and meticulous document management. The outcome? An immersive experience that invites users to unleash their creativity and bask in moments of laughter and delight.
 
-
-    <script>
+    </p>
+    </div>
+     <script>
        const madLibSentences = [
-    "Deep in the heart of the ${adjective} jungle, a curious ${noun} stumbled upon a hidden ${noun}. Inside, they found a trove of ${pluralNoun} and decided to ${adverb} share their discovery with fellow adventurers.",
-    "In a far-off galaxy, a ${adjective} explorer eagerly awaited a brave crew to ${verb} alongside them and uncover the mysteries of a distant ${noun}. Little did they know, the crew harbored a fear of ${pluralNoun}!",
-    "The brilliant ${adjective} scientist invented a ${noun} that revolutionized ${pluralNoun}. As the world marveled at the ${adverb} invention, they foresaw a new era of ${adjective} technology.",
-    "As the sun set over the ${adjective} mountains, a group of ${pluralNoun} decided to ${verb} towards a hidden valley. Their laughter echoed ${adverb} through the valleys as they anticipated the wonders that awaited them.",
-    "Gathered around the campfire, the intrepid ${adjective} adventurers shared stories of their journeys. Suddenly, they heard a rustling in the bushes and watched as a curious ${noun} emerged, ready to ${verb} into the darkness.",
-    "In a realm of magic and wonder, ${pluralNoun} possessed incredible ${adjective} powers. They could ${verb} with unmatched skill and wielded ${adverb} powerful spells."
+   "Beneath the canopy of the ${adjective} forest, a curious ${noun} stumbled upon a hidden ${noun}. Inside, they discovered a trove of ${pluralNoun} and decided to ${adverb} share their discovery with fellow explorers."
+
+"On a distant planet, a ${adjective} adventurer eagerly awaited a brave crew to ${verb} alongside them and unravel the secrets of a remote ${noun}. Little did they know, the crew harbored a fear of ${pluralNoun}!"
+
+"The ingenious ${adjective} inventor created a ${noun} that transformed ${pluralNoun}. As the world marveled at the ${adverb} invention, they envisioned a new era of ${adjective} technology."
+
+"As twilight descended over the ${adjective} hills, a band of ${pluralNoun} decided to ${verb} towards a hidden vale. Their laughter reverberated ${adverb} through the valleys as they anticipated the wonders that awaited them."
+
+"Gathered around the bonfire, the intrepid ${adjective} travelers exchanged tales of their journeys. Suddenly, they heard a rustling in the bushes and observed as a curious ${noun} emerged, poised to ${verb} into the darkness."
+
+"In a realm of enchantment and marvel, ${pluralNoun} possessed extraordinary ${adjective} abilities. They could ${verb} with unparalleled skill and wielded ${adverb} potent enchantments."
+
 ];
-
-
 
 
        function generateMadLib() {
@@ -148,7 +151,7 @@
             .replace("${adjective}", adjective)
             .replace("${noun}", noun);
 
-        document.getElementById('madLibANS').innerHTML ='<h2>Result of your Mad Lib:</h2><p>${madLib}</p>';
+        document.getElementById('madLibANS').innerHTML =`<h2>Result of your Mad Lib:</h2><p>${madLib}</p>`;
 
         document.getElementById('madLibForm').reset();
     } else {
