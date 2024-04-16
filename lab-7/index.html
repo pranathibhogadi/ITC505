@@ -112,9 +112,7 @@
     
     <p>Footer Integrity: Transparency is paramount, evident in our footer. By showcasing the last modified date, users can trust in the document's relevance, ensuring they stay informed about updates and refinements.</p>
     
-    <p>Final Thoughts: Our Mad Libs journey seamlessly integrates HTML structure, JavaScript functionality, CSS styling, and meticulous document management. The outcome? An immersive experience that invites users to unleash their creativity and bask in moments of laughter and delight.
-
-    </p>
+    <p>Final Thoughts: Our Mad Libs journey seamlessly integrates HTML structure, JavaScript functionality, CSS styling, and meticulous document management. The outcome? An immersive experience that invites users to unleash their creativity and bask in moments of laughter and delight.</p>
     </div>
      <script>
        const madLibSentences = [
@@ -129,7 +127,6 @@
 "Gathered around the bonfire, the intrepid ${adjective} travelers exchanged tales of their journeys. Suddenly, they heard a rustling in the bushes and observed as a curious ${noun} emerged, poised to ${verb} into the darkness."
 
 "In a realm of enchantment and marvel, ${pluralNoun} possessed extraordinary ${adjective} abilities. They could ${verb} with unparalleled skill and wielded ${adverb} potent enchantments."
-
 ];
 
 
@@ -151,7 +148,7 @@
             .replace("${adjective}", adjective)
             .replace("${noun}", noun);
 
-        document.getElementById('madLibANS').innerHTML ='<h2>Result of your Mad Lib:</h2><p>${madLib}</p>';
+        document.getElementById('madLibANS').innerHTML =`<h2>Result of your Mad Lib:</h2><p>${madLib}</p>`;
 
         document.getElementById('madLibForm').reset();
     } else {
