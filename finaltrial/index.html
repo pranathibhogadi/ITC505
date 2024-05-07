@@ -1,0 +1,186 @@
+Here's the modified code with a different color scheme:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lights Out</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0; /* Changed the background color */
+      color: #333; /* Changed the default text color */
+      font-family: 'Arial', sans-serif; /* Changed the font family */
+    }
+    
+    .title {
+      color: #4a90e2; /* Changed the title text color */
+      text-align: center; /* Center align the title */
+      margin-top: 20px; /* Add margin to the top of the title */
+    }
+    
+    #board {
+      display: grid;
+      grid-template-columns: repeat(5, 60px);
+      gap: 5px;
+      background-color: #666; /* Changed the board background color */
+      border-radius: 10px; /* Add border radius to the board */
+      padding: 10px; /* Add padding to the board */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow to the board */
+    }
+    
+    .cell {
+      width: 60px;
+      height: 60px;
+      background-color: #ccc;
+      border: 1px solid #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    
+    .buttons {
+      margin-top: 20px;
+      text-align: center; /* Center align the buttons */
+    }
+    
+    .start-btn, .end-btn {
+      margin: 5px;
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border: none; /* Remove button border */
+      border-radius: 5px; /* Add border radius to the buttons */
+      transition: background-color 0.3s; /* Add transition effect */
+    }
+    
+    .start-btn {
+      background-color: #4a90e2; /* Change the start button color */
+      color: #fff; /* Change the start button text color */
+    }
+    
+    .start-btn:hover {
+      background-color: #357ebd; /* Change the start button color on hover */
+    }
+    
+    .end-btn {
+      background-color: #e74c3c; /* Change the end button color */
+      color: #fff; /* Change the end button text color */
+    }
+    
+    .end-btn:hover {
+      background-color: #c0392b; /* Change the end button color on hover */
+    }
+
+    .Addendum {
+      color: #777; /* Changed the text color of the addendum */
+      text-align: left;
+      margin-top: 20px;
+      font-style: italic; /* Changed the font style of the addendum */
+    }
+  </style>
+</head>
+<body>
+
+<h1 class="title">Lights Out</h1>
+<div id="board"></div>
+<div class="buttons">
+  <button class="start-btn" onclick="startGame()">Start Game</button>
+  <button class="end-btn" onclick="endGame()">End Game</button>
+</div>
+<footer>
+  <div class="Addendum">
+    <h2><u>Addendum</u></h2>
+    <p><b><u>Lights Out Game</u>:</b> The Lights Out game features a grid of lights that can be toggled on or off. The objective is to turn off all lights, typically starting with a random but solvable setup.</p>
+    <p><b><u>Design Choices</u>:</b> Emphasizing clarity and neutrality in design decisions facilitates user comprehension and maintains objectivity. Prioritizing simplicity ensures accessible and unbiased content.</p>
+    <p><b><u>Challenges & Solutions</u>:</b> Developing the game involved executing grid logic, CSS styling, and event handling. Challenges included balancing complexity for a favorable user experience and achieving responsive design. Solutions involved thorough testing, step-by-step enhancements, and openness to user feedback.</p>
+    <p><b><u>Insights</u>:</b> Recognizing user behaviors, balancing simplicity and complexity, and the critical role of user testing emerged as key takeaways. Continuous improvement relies on integrating user feedback and ongoing learning.</p>
+  </div>
+</footer>
+<script>
+  const rows = 5;
+  const cols = 5;
+  let board = [];
+
+  function createBoard() {
+    const boardElement = document.getElementById('board');
+    for (let i = 0; i < rows; i++) {
+      board[i] = [];
+      for (let j = 0; j < cols; j++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.dataset.row = i;
+        cell.dataset.col = j;
+        cell.addEventListener('click', toggleLights);
+        boardElement.appendChild(cell);
+        board[i][j] = false; // Lights are initially off
+      }
+    }
+    updateBoard();
+  }
+
+  function toggleLights() {
+    const row = parseInt(this.dataset.row);
+    const col = parseInt(this.dataset.col);
+
+    // Toggle clicked cell and adjacent cells
+    toggleCell(row, col);
+    toggleCell(row - 1, col);
+    toggleCell(row + 1, col);
+    toggleCell(row, col - 1);
+    toggleCell(row, col + 1);
+
+    updateBoard();
+
+    // Check for win
+    if (board.every(row => row.every(cell => !cell))) {
+      alert('Congratulations! You won!');
+      resetBoard();
+    }
+  }
+
+  function toggleCell(row, col) {
+    if (row >= 0 && row < rows && col >= 0 && col < cols) {
+      board[row][col] = !board[row][col];
+    }
+  }
+
+  function updateBoard() {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell, index) => {
+      const row = Math.floor(index / cols);
+      const col = index % cols;
+      cell.style.backgroundColor = board[row][col] ? '#333' : '#ccc';
+      cell.style.color = board[row][col] ? '#ccc' : '#333';
+    });
+  }
+
+  function resetBoard() {
+    board = board.map(row => row.map(() => false));
+    updateBoard();
+  }
+
+  function startGame() {
+    resetBoard();
+  }
+
+  function endGame() {
+    alert('Game Over!');
+  }
+
+  createBoard();
+</script>
+
+</body>
+</html>
+```
+
+This code changes the colors throughout the page, giving it a different appearance while retaining the functionality.
