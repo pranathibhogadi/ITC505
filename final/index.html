@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<footer>
+        <p>Last updated: 
+            <span id="lastModified"></span>
+        </p>
+    </footer>
+    <script type="text/javascript">
+         var x = document.lastModified;
+         document.getElementById('lastModified').textContent = x;
+    </script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lights Out</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url(""C:\Users\pb734\Desktop\background_image.jpg""); 
+      background-size: cover;
+      background-position: center;
+      color: #333; /* Changed the default text color */
+      font-family: 'Arial', sans-serif; /* Changed the font family */
+    }
+    
+    .title {
+      color: #4a90e2; /* Changed the title text color */
+      text-align: center; /* Center align the title */
+      margin-top: 20px; /* Add margin to the top of the title */
+    }
+    
+    #board {
+      display: grid;
+      grid-template-columns: repeat(5, 60px);
+      gap: 5px;
+      background-color: #666; /* Changed the board background color */
+      border-radius: 10px; /* Add border radius to the board */
+      padding: 10px; /* Add padding to the board */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow to the board */
+    }
+    
+    .cell {
+      width: 60px;
+      height: 60px;
+      background-color: #ccc;
+      border: 1px solid #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    
+    .buttons {
+      margin-top: 20px;
+      text-align: center; /* Center align the buttons */
+    }
+    
+    .start-btn, .end-btn {
+      margin: 5px;
+      padding: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border: none; /* Remove button border */
+      border-radius: 5px; /* Add border radius to the buttons */
+      transition: background-color 0.3s; /* Add transition effect */
+    }
+    
+    .start-btn {
+      background-color: #4a90e2; /* Change the start button color */
+      color: #fff; /* Change the start button text color */
+    }
+    
+    .start-btn:hover {
+      background-color: #357ebd; /* Change the start button color on hover */
+    }
+    
+    .end-btn {
+      background-color: #e74c3c; /* Change the end button color */
+      color: #fff; /* Change the end button text color */
+    }
+    
+    .end-btn:hover {
+      background-color: #c0392b; /* Change the end button color on hover */
+    }
+
+    .Addendum {
+      color: #777; /* Changed the text color of the addendum */
+      text-align: left;
+      margin-top: 20px;
+      font-style: italic; /* Changed the font style of the addendum */
+    }
+  </style>
+</head>
+<body>
+
+<h1 class="title">Lights Out</h1>
+<div id="board"></div>
+<div class="buttons">
+  <button class="start-btn" onclick="startGame()">Start Game</button>
+  <button class="end-btn" onclick="endGame()">End Game</button>
+</div>
+<footer>
+  <div class="Addendum">
+    <h2><u>Addendum</u></h2>
+    <p><b><u>
+<p>The Lights Out game, originally created by Tiger Electronics in 1995, presents a unique and challenging puzzle experience. The goal of the game is to switch off all the lights on a 5x5 board of lights. Each light has two states: on and off. Clicking on a light toggles its state and the state of its adjacent lights (up, down, left, and right).</p>
+<p>To master the Lights Out game, players need to develop a keen sense of strategy and planning. Here are some key insights into the game's mechanics and design:</p>
+<ul>
+    <li><strong>Gameplay:</strong> The gameplay involves toggling lights in a specific order to solve the puzzle. Each click changes the state of the clicked light and its immediate neighbors, requiring thoughtful consideration of each move.</li>
+    <li><strong>Starting Configuration:</strong> The game provides a random yet solvable starting point for players to begin their challenge. This randomness keeps the game fresh and engaging with each new attempt.</li>
+    <li><strong>User Experience:</strong> The design focuses on clarity and simplicity, offering players a clean and straightforward interface that emphasizes the core puzzle-solving aspect of the game.</li>
+    <li><strong>Feedback:</strong> Visual feedback through light toggling and auditory cues when winning a game enhance the overall experience, providing players with satisfying interactions.</li>
+</ul>
+<p>Enjoy the Lights Out game! Practice solving puzzles and improve your strategy to tackle increasingly challenging boards. The more you play, the more skilled you will become at mastering the game.</p>
+  </div>
+</footer>
+<script>
+  const rows = 5;
+  const cols = 5;
+  let board = [];
+
+  function createBoard() {
+    const boardElement = document.getElementById('board');
+    for (let i = 0; i < rows; i++) {
+      board[i] = [];
+      for (let j = 0; j < cols; j++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.dataset.row = i;
+        cell.dataset.col = j;
+        cell.addEventListener('click', toggleLights);
+        boardElement.appendChild(cell);
+        board[i][j] = false; // Lights are initially off
+      }
+    }
+    updateBoard();
+  }
+
+  function toggleLights() {
+    const row = parseInt(this.dataset.row);
+    const col = parseInt(this.dataset.col);
+
+    // Toggle clicked cell and adjacent cells
+    toggleCell(row, col);
+    toggleCell(row - 1, col);
+    toggleCell(row + 1, col);
+    toggleCell(row, col - 1);
+    toggleCell(row, col + 1);
+
+    updateBoard();
+
+    // Check for win
+    if (board.every(row => row.every(cell => !cell))) {
+      alert('Congratulations! You won!');
+      resetBoard();
+    }
+  }
+
+  function toggleCell(row, col) {
+    if (row >= 0 && row < rows && col >= 0 && col < cols) {
+      board[row][col] = !board[row][col];
+    }
+  }
+
+  function updateBoard() {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell, index) => {
+      const row = Math.floor(index / cols);
+      const col = index % cols;
+      cell.style.backgroundColor = board[row][col] ? '#333' : '#ccc';
+      cell.style.color = board[row][col] ? '#ccc' : '#333';
+    });
+  }
+
+  function resetBoard() {
+    board = board.map(row => row.map(() => false));
+    updateBoard();
+  }
+
+  function startGame() {
+    resetBoard();
+  }
+
+  function endGame() {
+    alert('Game Over!');
+  }
+
+  createBoard();
+</script>
+
+</body>
+</html>
